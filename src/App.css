@@ -1,38 +1,83 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack scoreboard and board vertically */
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.scoreboard {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space between scores */
+  width: 100%; /* Take full width */
+  max-width: 600px; /* Set a max width for the scoreboard */
+  padding: 10px; /* Add some padding */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+  grid-gap: 1px; /* Gap between blocks */
+  height: 60vh; /* Fixed height for the board */
+  width: 60vh; /* Fixed width for the board */
+  border: 1px solid black;
+}
+
+.block {
+  height: calc(60vh / 3); /* Fixed height for blocks to maintain 3 rows */
+  width: calc(60vh / 3); /* Fixed width for blocks to maintain 3 columns */
+  cursor: pointer;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensure image stays within block */
+  position: relative;
+}
+
+.img {
+  width: 150px; /* Adjust as necessary */
+  height: 150px; /* Adjust as necessary */
+  object-fit: cover; /* Ensures the image fills the div */
+  position: absolute; /* Position the image inside the block */
+}
+
+.winner-container {
+  display: flex; /* Use flexbox for better alignment */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align elements */
+  margin-top: 20px; /* Add space above the container */
+}
+
+.winner-container h1 {
+  margin-bottom: 15px; /* Space between the message and the button */
+}
+
+.winner-container button {
+  padding: 10px 20px; /* Add padding for better button size */
+  font-size: 16px; /* Increase font size for readability */
+  cursor: pointer; /* Change cursor to pointer */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Add rounded corners */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white; /* Text color */
+  transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.winner-container button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+@media (max-width: 768px) {
+  .board {
+    height: 60vh; /* Maintain fixed height */
+    width: 60vh; /* Maintain fixed width */
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 480px) {
+  .board {
+    height: 60vh; /* Maintain fixed height */
+    width: 60vh; /* Maintain fixed width */
   }
 }
